@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Contato</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #a8c0ff, #3f2b96);
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Adicionar Contato</h2>
+    <form id="adicionar-contato-form" class="mb-5">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="numero">Telefone:</label>
+            <input type="text" class="form-control" id="numero" name="numero" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+
+    <h2 class="mb-4">Obter Telefone pelo Nome</h2>
+    <form id="buscar-numero-form" class="mb-5">
+        <div class="form-group">
+            <label for="buscar-nome">Nome:</label>
+            <input type="text" class="form-control" id="buscar-nome" required>
+        </div>
+        <button type="submit" class="btn btn-success">Pesquisar</button>
+    </form>
+
+    <div id="result" class="alert" role="alert" style="display: none;"></div>
+
+    <h2 class="mb-4">Lista de Contatos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Telefone</th>
+            </tr>
+        </thead>
+        <tbody id="contato-list">
+        </tbody>
+    </table>
+</div>
+
+<script src="/js/contatoEvents.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

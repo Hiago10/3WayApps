@@ -1,0 +1,112 @@
+version: '3.9'
+
+networks:
+  network1:
+    driver: bridge
+  network2:
+    driver: bridge
+  network3:
+    driver: bridge
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app-contatos
+      - app-livros
+      - app-filmes
+    networks:
+      - network1
+      - network2
+      - network3
+
+  mysql1:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: contatos
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql1", "-uroot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - network1
+
+  app-contatos:
+    hostname: app-contatos
+    build:
+      context: ./app-contatos
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_HOST: mysql1
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+      MYSQL_DB: contatos
+    depends_on:
+      mysql1:
+        condition: service_healthy
+    networks:
+      - network1
+
+  mysql2:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: livros
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql2", "-uroot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - network2
+
+  app-livros:
+    hostname: app-livros
+    build:
+      context: ./app-livros
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_HOST: mysql2
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+      MYSQL_DB: livros
+    depends_on:
+      mysql2:
+        condition: service_healthy
+    networks:
+      - network2
+
+  mysql3:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: filmes
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql3", "-uroot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - network3
+
+  app-filmes:
+    hostname: app-filmes
+    build:
+      context: ./app-filmes
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_HOST: mysql3
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+      MYSQL_DB: filmes
+    depends_on:
+      mysql3:
+        condition: service_healthy
+    networks:
+      - network3  

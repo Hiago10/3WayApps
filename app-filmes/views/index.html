@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de filme</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #e9eef2; 
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff; 
+            padding: 30px;
+            border-radius: 5px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff; 
+            padding-bottom: 10px; 
+        }
+
+        .btn-primary {
+            background-color: #007bff; 
+        }
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Adicionar filme</h2>
+    <form id="adicionar-filme-form" class="mb-5">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="diretor">diretor:</label>
+            <input type="text" class="form-control" id="diretor" name="diretor" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+
+    <h2 class="mb-4">Obter diretor pelo Nome do Filme</h2>
+    <form id="buscar-diretor-form" class="mb-5">
+        <div class="form-group">
+            <label for="buscar-nome">Nome:</label>
+            <input type="text" class="form-control" id="buscar-nome" required>
+        </div>
+        <button type="submit" class="btn btn-success">Pesquisar</button>
+    </form>
+
+    <div id="result" class="alert" role="alert" style="display: none;"></div>
+
+    <h2 class="mb-4">Lista de filmes</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">diretor</th>
+            </tr>
+        </thead>
+        <tbody id="filme-list">
+        </tbody>
+    </table>
+</div>
+
+<script src="/js/filmeEvents.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
