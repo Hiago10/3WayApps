@@ -1,6 +1,6 @@
 # 3WayApps
 
-O projeto 3WayApps envolve a integração de três aplicações distintas, cada uma hospedada em seus próprios contêineres e redes. Essas aplicações serão comunicáveis por meio de um reverse proxy que facilitará a interligação entre elas.
+O projeto 3WayApps envolve a integração de três aplicações distintas, cada uma hospedada em seus próprios contêineres e redes. Essas aplicações serão comunicáveis por meio de um reverse proxy.
 
 ## Executar o Projeto Localmente 
 
