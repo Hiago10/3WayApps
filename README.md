@@ -18,7 +18,7 @@ docker compose up
 ```bash
 docker compose up -d
 ```
-2. Configure o arquivo `hosts` do Docker host para associar o endereço IP local 127.0.0.1 aos seguintes nomes de domínio: teste1.com, teste2.com e teste3.com. Isso é necessário porque o NGINX usa a diretiva `server_name` para direcionar as solicitações para as aplicações desejadas, sendo teste1.com associado a app-contatos, teste2.com associado a app-livros e teste3.com associado a app-filmes.  
+2. Configure o arquivo `hosts` do Docker host para associar o endereço IP local 127.0.0.1 aos seguintes nomes de domínio: teste1.com, teste2.com e teste3.com. Isso é necessário porque o NGINX usa a diretiva `server_name` para direcionar as solicitações para as aplicações desejadas, sendo `teste1.com` associado a app-contatos, `teste2.com` associado a app-livros e `teste3.com` associado a app-filmes.  
 
 Após configurar o arquivo de hosts, as aplicações estarão disponíveis para acesso:
 
